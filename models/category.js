@@ -7,6 +7,9 @@ let CategorySchema = new Schema({
 });
 
 //Virtual for category's URL
+CategorySchema.virtual("url").get(function () {
+  return `/categories/${this._id}`;
+});
 
 // Export model
 module.exports = mongoose.model("Category", CategorySchema);

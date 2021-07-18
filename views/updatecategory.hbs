@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Update Category</h1>
+    <form method="POST" action="">
+      <div class="form-item">
+        <label for="categoryname">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="categoryname"
+          required
+          placeholder="Category Name"
+          value={{category.name}}
+        />
+      </div>
+      <div class="form-item">
+        <label for="categorydesc">Description</label>
+        <textarea
+          rows="20"
+          cols="5"
+          name="description"
+          id="categorydesc"
+          required
+          placeholder="Category Description"
+        >{{category.description}}</textarea>
+      </div>
+      <input type="hidden" name="id" value={{category._id}} required />
+      <div class="form-item">
+        <input type="submit" value="Update" />
+      </div>
+    </form>
+    <div class="error-div">
+      <ul class="error-list">
+        {{#each errors}}
+          <li>{{this.msg}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </body>
+</html>

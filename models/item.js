@@ -10,6 +10,9 @@ const ItemSchema = new Schema({
 });
 
 // Virtual for Item URL
+ItemSchema.virtual("url").get(function () {
+  return `/items/${this._id}`;
+});
 
 //Export model
 module.exports = mongoose.model("Item", ItemSchema);

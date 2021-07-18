@@ -3,7 +3,16 @@ const Item = require("../models/item");
 
 // Full item list
 exports.item_list = (req, res) => {
-  res.send("todo: item list");
+  Item.find({}, "name").exec((err, list_items) => {
+    if (err) {
+      return next(err);
+    }
+    res.render("list", {
+      type: "Items",
+      list: list_items,
+      title: "Item List",
+    });
+  });
 };
 
 // Specific item details
