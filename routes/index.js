@@ -8,7 +8,10 @@ const item_controller = require("../controllers/itemController");
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
-
+const Handlebars = require("handlebars");
+Handlebars.registerHelper("eq", function (arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
 // Category routes
 
 //Home page - list of all categories
@@ -47,16 +50,16 @@ router.get("/items/create", item_controller.item_create_get);
 router.post("/items/create", item_controller.item_create_post);
 
 //GET - delete form
-router.get("/items/delete:id", item_controller.item_delete_get);
+router.get("/items/delete/:id", item_controller.item_delete_get);
 
 //POST - delete form
-router.post("/items/delete:id", item_controller.item_delete_post);
+router.post("/items/delete/:id", item_controller.item_delete_post);
 
 //GET - update form
-router.get("/items/update:id", item_controller.item_update_get);
+router.get("/items/update/:id", item_controller.item_update_get);
 
 //POST - update form
-router.post("/items/update:id", item_controller.item_update_post);
+router.post("/items/update/:id", item_controller.item_update_post);
 
 //GET - detail of specific item (use id)
 router.get("/items/:id", item_controller.item_detail);

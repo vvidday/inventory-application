@@ -1,0 +1,85 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Create New Item</h1>
+    <form method="POST" action="">
+      <div class="form-item">
+        <label for="itemname">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="itemname"
+          required
+          placeholder="Item Name"
+          {{#if itemname}}
+          value={{itemname}}
+          {{/if}}
+        />
+      </div>
+      <div class="form-item">
+        <label for="itemdescription">Description</label>
+        <textarea
+          rows="20"
+          cols="5"
+          required
+          name="description"
+          id="itemdescription"
+          placeholder="Item Description"
+        >{{#if itemdescription}}{{itemdescription}}{{/if}}</textarea>
+      </div>
+      <div class="form-item">
+        <label for="itemcategory">Category</label>
+        <select name="category" id="itemcategory">
+          required
+          {{#each categories}}
+            <option value={{this._id}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-item">
+        <label for="itemprice">Price</label>
+        <input
+          type="number"
+          name="price"
+          id="itemprice"
+          min="0"
+          max="9999"
+          step="0.01"
+          required
+          {{#if itemprice}}
+          value={{itemprice}}
+          {{/if}}
+        />
+      </div>
+      <div class="form-item">
+        <label for="itemstock">Stock</label>
+        <input
+          type="number"
+          name="stock"
+          id="itemstock"
+          min="0"
+          max="9999"
+          required
+          {{#if itemstock}}
+          value={{itemstock}}
+          {{/if}}
+        />
+      </div>
+      <div class="form-item">
+        <input type="submit" value="Add To Items" />
+      </div>
+    </form>
+    <div class="error-div">
+      <ul class="error-list">
+        {{#each errors}}
+          <li>{{this.msg}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </body>
+</html>
