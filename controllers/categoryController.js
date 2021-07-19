@@ -11,7 +11,7 @@ const { body, validationResult } = require("express-validator");
 // although it's a middleware function, we don't need next since we're ending the request here since we send back (res.send)
 exports.category_list = async (req, res, next) => {
   try {
-    const list_categories = await category.find({}, "name").exec();
+    const list_categories = await category.find().exec();
     res.render("list", {
       type: "Categories",
       list: list_categories,
@@ -71,6 +71,7 @@ exports.category_create_post = [
           const cat = new category({
             name: req.body.name,
             description: req.body.description,
+            image: req.body.image,
           });
           try {
             const saveCat = await cat.save();
@@ -173,6 +174,7 @@ exports.category_update_post = [
     const new_category = new category({
       name: req.body.name,
       description: req.body.description,
+      image: req.body.image,
       _id: req.body.id,
     });
     if (!errors.isEmpty()) {

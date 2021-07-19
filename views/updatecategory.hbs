@@ -30,6 +30,16 @@
           placeholder="Category Description"
         >{{category.description}}</textarea>
       </div>
+      <div class="form-item">
+        <label for="itemimage">Image URL</label>
+        <input
+          type="text"
+          name="image"
+          id="itemimage"
+          required
+          value={{category.image}}
+        />
+      </div>
       <input type="hidden" name="id" value={{category._id}} required />
       <div class="form-item">
         <input type="submit" value="Update" />

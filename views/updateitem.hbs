@@ -30,8 +30,6 @@
           placeholder="Item Description"
         >{{item.description}}</textarea>
       </div>
-      <p>{{#eq item.category.name "Crab"}}Test{{/eq}}</p>
-      <p>{{#eq item.category "60f3e5035d79eb42749ffca2"}} {{item.category}} {{/eq}}</p>
       <div class="form-item">
         <label for="itemcategory">Category</label>
         <select name="category" id="itemcategory">
@@ -67,6 +65,10 @@
           required
           value={{item.stock}}
         />
+      </div>
+      <div class="form-item">
+          <label for="itemimage">Image URL</label>
+          <input type="text" name="image" id="itemimage" required value={{item.image}}>
       </div>
       <div class="form-item">
         <input type="hidden" name="id" value={{item._id}} required>

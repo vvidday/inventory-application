@@ -71,7 +71,11 @@
         />
       </div>
       <div class="form-item">
-        <input type="submit" value="Add To Items" />
+          <label for="itemimage">Image URL</label>
+          <input type="text" name="image" id="itemimage" required {{#if itemimage}} value={{itemimage}} {{/if}}>
+      </div>
+      <div class="form-item">
+        <input type="submit" value="Create Item" />
       </div>
     </form>
     <div class="error-div">

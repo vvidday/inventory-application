@@ -81,6 +81,7 @@ exports.item_create_post = [
             itemdescription: req.body.description,
             itemprice: req.body.price,
             itemstock: req.body.stock,
+            itemimage: req.body.image,
             errors: errors.array(),
           });
         } else {
@@ -91,8 +92,13 @@ exports.item_create_post = [
               category: req.body.category,
               price: req.body.price,
               stock: req.body.stock,
+              image: req.body.image,
             });
-            new_item.save().then(() => res.redirect(new_item.url));
+            console.log(req.body.image);
+            new_item
+              .save()
+              .then(() => res.redirect(new_item.url))
+              .catch((err) => next(err));
           } catch (err) {
             return next(err);
           }
@@ -196,6 +202,7 @@ exports.item_update_post = [
               category: req.body.category,
               price: req.body.price,
               stock: req.body.stock,
+              image: req.body.image,
               _id: req.body.id,
             });
             Item.findByIdAndUpdate(req.body.id, new_item)
