@@ -7,14 +7,17 @@
   </head>
   <body>
     <h1>{{item.name}}</h1>
-    <img src={{item.image}} />
-    <p>{{item.description}}</p>
-    <p>Category: <a href={{category.url}}>{{category.name}}</a></p>
+    <img class="detailimage" src={{item.image}} />
+    <p class="biggertext">{{item.description}}</p>
+    <p class="biggertext">Category:
+      <a href={{category.url}}>{{category.name}}</a></p>
     <p>Price: {{item.price}}</p>
     <p>Stock: {{item.stock}}</p>
 
-    <a href="/items/delete/{{item._id}}">Delete Item</a>
-    <a href="/items/update/{{item._id}}">Update Item</a>
+    <a class="buttonlink sidemargin" href="/items/delete/{{item._id}}">Delete
+      Item</a>
+    <a class="buttonlink sidemargin" href="/items/update/{{item._id}}">Update
+      Item</a>
 
   </body>
 </html>

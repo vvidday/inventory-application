@@ -7,22 +7,33 @@
   </head>
   <body>
     <h1>{{category.name}}</h1>
-    <img src={{category.image}} />
-    <p>{{category.description}}</p>
+    <img class="detailimage" src={{category.image}} />
+    <p class="biggertext">{{category.description}}</p>
 
-    <a href="/categories/delete/{{category._id}}">Delete Category</a>
-    <a href="/categories/update/{{category._id}}">Update Category</a>
+    <div class="link-div">
+      <a
+        class="buttonlink sidemargin"
+        href="/categories/delete/{{category._id}}"
+      >Delete Category</a>
+      <a
+        class="buttonlink sidemargin"
+        href="/categories/update/{{category._id}}"
+      >Update Category</a>
+    </div>
 
     {{#if related_items}}
       <h2>All Items of {{category.name}} Category:</h2>
-      <ul>
-        {{#each related_items}}
-          <li>
-            <a href="/items/{{this._id}}">{{this.name}}</a>
-            <img src={{this.image}} />
-          </li>
-        {{/each}}
-      </ul>
+      <div class="list-container">
+        <ul class="itemlist">
+          {{#each related_items}}
+            <li>
+              <a href="/items/{{this._id}}">{{this.name}}</a>
+              <img src={{this.image}} />
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
     {{/if}}
 
   </body>

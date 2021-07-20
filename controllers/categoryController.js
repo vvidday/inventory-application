@@ -53,6 +53,7 @@ exports.category_create_post = [
     .trim()
     .isLength({ min: 1 })
     .escape(),
+  body("image", "Image URL required").trim().isLength({ min: 1 }),
   async (req, res, next) => {
     console.log(req.body);
     const errors = validationResult(req);
@@ -169,6 +170,7 @@ exports.category_update_post = [
     .trim()
     .isLength({ min: 1 })
     .escape(),
+  body("image", "Image URL must not be empty").trim().isLength({ min: 1 }),
   async (req, res, next) => {
     const errors = validationResult(req);
     const new_category = new category({

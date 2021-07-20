@@ -8,10 +8,7 @@ const item_controller = require("../controllers/itemController");
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
-const Handlebars = require("handlebars");
-Handlebars.registerHelper("eq", function (arg1, arg2, options) {
-  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
-});
+
 // Category routes
 
 //Home page - list of all categories

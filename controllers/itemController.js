@@ -10,7 +10,7 @@ const { body, validationResult } = require("express-validator");
 // Full item list
 exports.item_list = async (req, res, next) => {
   try {
-    const list_items = await Item.find({}, "name").exec();
+    const list_items = await Item.find().exec();
     res.render("list", { list: list_items, title: "Item List", type: "Items" });
   } catch (err) {
     return next(err);
@@ -63,6 +63,7 @@ exports.item_create_post = [
     .isLength({ min: 1 })
     .escape()
     .isInt({ min: 0, max: 9999 }),
+  body("image", "Image URL required").trim().isLength({ min: 1 }),
   async (req, res, next) => {
     try {
       const [existing, categories] = await Promise.all([
@@ -177,6 +178,7 @@ exports.item_update_post = [
     .isLength({ min: 1 })
     .escape()
     .isInt({ min: 0, max: 9999 }),
+  body("image", "Image URL required").trim().isLength({ min: 1 }),
   async (req, res, next) => {
     try {
       const [item, categories] = await Promise.all([
